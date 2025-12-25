@@ -8,6 +8,7 @@ let isAudioStarted = false;
 
 // --- Setup Core ---
 document.addEventListener('DOMContentLoaded', () => {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     initPreloader();
     initLenis();
     initBlueprint();
