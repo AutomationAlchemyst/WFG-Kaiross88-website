@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Automation Workshop | WorkFlowGuys x Kairos88</title>
+    <meta name="description"
+        content="Master the art of 'Vibe Coding'. Build an enterprise-grade website in 4 hours using just natural language. No code, no syntax, just vibes.">
+    <meta name="keywords"
+        content="AI workshop, Vibe Coding, No-code web design, WorkFlowGuys, Kairos88, Automation, Singapore AI Workshop">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://workflowguys.com/workshop">
+    <meta property="og:title" content="AI & Automation Workshop | Build with Vibes">
+    <meta property="og:description"
+        content="Build an amazing website with just your words. A 4-hour intensive workshop for everyone.">
+    <meta property="og:image" content="https://workflowguys.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="AI & Automation Workshop | Build with Vibes">
+    <meta property="twitter:description"
+        content="Build an amazing website with just your words. A 4-hour intensive workshop for everyone.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Syne (Headings), Outfit (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Syne:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Lenis for Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#121212',
+                        'accent-blue': '#00F0FF',
+                        'accent-orange': '#FF6B00',
+                        'light': '#F5F5F7',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        heading: ['Syne', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-primary text-light overflow-x-hidden cursor-none">
+
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[100000] bg-primary flex flex-col items-center justify-center font-mono">
+        <div class="mb-12 text-accent-blue opacity-50 text-[10px] tracking-[0.5em] uppercase animate-pulse">
+            Initializing Vibe Engine...
+        </div>
+        <div id="preloader-counter" class="text-8xl font-heading tracking-tighter mb-4">00</div>
+        <div class="flex flex-col gap-1 w-64 opacity-20">
+            <div id="preloader-log-1" class="text-[8px] uppercase tracking-widest">>> Checking Atmosphere...</div>
+            <div id="preloader-log-2" class="text-[8px] uppercase tracking-widest opacity-0">>> Syncing Core...</div>
+            <div id="preloader-log-3" class="text-[8px] uppercase tracking-widest opacity-0">>> Calibrating Vibes...
+            </div>
+        </div>
+        <div class="absolute bottom-12 text-[8px] tracking-[1em] opacity-10 uppercase">WG × K88 SYSTEM v4.0</div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="custom-cursor"
+        class="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[9999] flex items-center justify-center">
+        <div
+            class="cursor-inner w-100 h-100 rounded-full border border-accent-blue/50 scale-100 transition-transform duration-300">
+        </div>
+        <div class="cursor-dot w-1 h-1 bg-accent-blue rounded-full absolute"></div>
+        <div
+            class="cursor-reveal opacity-0 absolute whitespace-nowrap text-[8px] font-mono tracking-tighter uppercase text-accent-blue pointer-events-none translate-y-8">
+            &lt;view_code /&gt;
+        </div>
+    </div>
+
+    <!-- Living Blueprint Canvas -->
+    <canvas id="blueprint-canvas" class="fixed inset-0 -z-10 bg-primary"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 px-6 py-8 flex justify-between items-end mix-blend-difference">
+        <div
+            class="text-2xl font-heading tracking-tighter transition-all duration-300 hover:tracking-normal cursor-pointer">
+            WFG <span class="text-xs opacity-50">×</span> K88
+        </div>
+        <div class="hidden md:flex gap-12 font-medium text-sm tracking-widest uppercase">
+            <a href="#about" class="hover:text-accent-blue transition-colors">The Vibe</a>
+            <a href="#workshop" class="hover:text-accent-blue transition-colors">The Workshop</a>
+            <a href="#founders" class="hover:text-accent-blue transition-colors">The Guys</a>
+            <a href="#register"
+                class="px-6 py-2 border border-light hover:bg-light hover:text-primary transition-all">Go Live</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-2xl focus:outline-none mix-blend-difference z-50">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay"
+        class="fixed inset-0 bg-primary/95 backdrop-blur-xl z-[60] transform translate-x-full transition-transform duration-500 flex flex-col justify-center items-center gap-8">
+        <button id="mobile-menu-close"
+            class="absolute top-8 right-6 text-2xl opacity-50 hover:opacity-100 z-50 cursor-pointer pointer-events-auto">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <a href="#about" class="mobile-link text-3xl font-heading uppercase hover:text-accent-blue">The Vibe</a>
+        <a href="#workshop" class="mobile-link text-3xl font-heading uppercase hover:text-accent-blue">The Workshop</a>
+        <a href="#founders" class="mobile-link text-3xl font-heading uppercase hover:text-accent-blue">The Guys</a>
+        <a href="#register"
+            class="mobile-link text-xl px-8 py-3 border border-light uppercase hover:bg-light hover:text-primary">Go
+            Live</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex flex-col justify-center px-6 md:px-24 pt-32 relative group">
+        <!-- X-Ray Code Reveal Layer -->
+        <!-- Hero Background Visual -->
+        <div class="hero-image-container">
+            <div class="hero-image-wrap" id="hero-visual">
+                <img src="assets/vibe_codeAnime.jpg" alt="The Vibe Genesis" class="w-full h-full object-cover">
+            </div>
+            <div class="parallax-glow" id="hero-glow-1"></div>
+            <div class="parallax-glow" id="hero-glow-2" style="top: 60%; right: 40%; width: 200px; height: 200px;">
+            </div>
+        </div>
+
+        <div
+            class="code-reveal-layer absolute inset-0 pointer-events-none z-10 opacity-0 transition-opacity duration-500 overflow-hidden px-6 md:px-24 pt-32 md:block">
+            <div
+                class="code-reveal-content font-mono text-[10px] text-accent-blue/30 leading-none h-full w-full opacity-50">
+                &lt;section id="hero"&gt;<br>
+                &nbsp;&nbsp;&lt;h1 class="frenzy"&gt;STOP CODING&lt;/h1&gt;<br>
+                &nbsp;&nbsp;&lt;p&gt;Build with vibes&lt;/p&gt;<br>
+                &nbsp;&nbsp;&lt;script&gt;console.log('Vibe mode active');&lt;/script&gt;<br>
+                &lt;/section&gt;
+            </div>
+        </div>
+
+        <div class="max-w-6xl relative z-20">
+            <h1 class="font-heading leading-none mb-8">
+                STOP <span class="frenzy-glitch italic text-accent-blue" data-text="CODING.">CODING.</span><br>
+                START <span class="frenzy-glitch italic text-accent-orange" data-text="VIBE-ING.">VIBE-ING.</span>
+            </h1>
+            <p class="text-xl md:text-3xl max-w-2xl font-light opacity-80 leading-relaxed mb-12">
+                Build a website just by talking to your computer. No technical degree required.
+                Even your grandma could do it (and we can't wait to show her).
+            </p>
+            <div class="flex flex-wrap gap-6">
+                <a href="#workshop"
+                    class="group flex items-center gap-4 text-lg font-semibold bg-light text-primary px-8 py-4 hover:bg-accent-blue hover:text-primary transition-all duration-500">
+                    See what you'll build
+                    <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
+                </a>
+                <div class="flex items-center gap-4 text-sm tracking-widest uppercase opacity-60">
+                    <span class="w-12 h-px bg-light"></span>
+                    4 Hours to Master AI
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kinetic Typography Marquee -->
+    <div class="py-24 overflow-hidden border-y border-white/10 mix-blend-difference">
+        <div class="kinetic-text" id="kinetic-marquee">
+            <span>NO CODE • NO SYNTAX • JUST VIBES • NO CODE • NO SYNTAX • JUST VIBES • NO CODE • NO SYNTAX • JUST VIBES
+                •</span>
+            <span>NO CODE • NO SYNTAX • JUST VIBES • NO CODE • NO SYNTAX • JUST VIBES • NO CODE • NO SYNTAX • JUST VIBES
+                •</span>
+        </div>
+    </div>
+
+    <!-- About Section: The Grandma Proof -->
+    <section id="about" class="py-32 px-6 md:px-24">
+        <div class="grid md:grid-cols-2 gap-24 items-center">
+            <div>
+                <h2 class="text-4xl md:text-6xl font-heading mb-8 leading-tight">
+                    Wait, you build websites<br><span class="text-accent-blue">without typing code?</span>
+                </h2>
+                <div class="space-y-6 text-lg md:text-xl opacity-70 font-light max-w-xl">
+                    <p>
+                        Exactly. We call it <span class="text-light font-semibold">Vibe Coding</span>.
+                        It’s not magic—it’s just using AI to do the boring stuff while you focus on the cool stuff.
+                    </p>
+                    <p>
+                        Instead of learning weird computer symbols like <code
+                            class="text-accent-orange bg-white/5 px-2 rounded">&lt;div&gt;</code>,
+                        you just tell the AI: "Make the button big and glowy." And it does it.
+                    </p>
+                    <p>
+                        It's as simple as texting a friend. If you can describe what you want, you can build it.
+                        No degrees, no stress, just pure creation.
+                    </p>
+                </div>
+            </div>
+            <div class="relative group">
+                <div
+                    class="absolute -inset-4 bg-accent-blue/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                </div>
+                <div class="glowing-border-container">
+                    <div
+                        class="holographic-card friendly-magic-glow relative overflow-hidden rounded-3xl border border-white/5 reveal-trigger">
+                        <img src="assets/singapore_vibe.png" alt="The Joy of Creation"
+                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60">
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-8">
+                            <div class="text-sm uppercase tracking-widest opacity-50 mb-2">The Vibe</div>
+                            <div class="text-3xl font-heading tracking-tight">Your vision, <br>live in 4 hours.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Vibe Coding Demo -->
+    <section id="vibe-demo" class="py-32 px-6 md:px-24 border-t border-white/5">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-heading mb-4">Try <span class="text-accent-blue">Vibe Coding</span>
+                    Now</h2>
+                <p class="opacity-60 text-lg">Type a command below to change the atmosphere.</p>
+            </div>
+
+            <div
+                class="grid md:grid-cols-2 gap-12 bg-black/40 p-8 md:p-12 rounded-3xl border border-white/10 backdrop-blur-xl">
+                <!-- Terminal Side -->
+                <div class="flex flex-col gap-6">
+                    <div class="font-mono text-xs text-accent-blue/50 uppercase tracking-widest">Interactive Terminal
+                        v1.0</div>
+                    <div
+                        class="flex-grow bg-black/60 p-6 rounded-xl font-mono text-sm border border-white/5 min-h-[200px] flex flex-col justify-end">
+                        <div class="opacity-30 mb-2">// System ready...</div>
+                        <div class="opacity-30 mb-2">// Awaiting natural language input...</div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-accent-blue">&gt;</span>
+                            <input type="text" id="vibe-input"
+                                class="bg-transparent border-none outline-none text-light w-full placeholder:opacity-20"
+                                placeholder="e.g. 'Make it blue and neon'" autocomplete="off">
+                        </div>
+                    </div>
+                    <!-- Magic Button Image -->
+                    <div class="glowing-border-container mt-4">
+                        <div class="relative group overflow-hidden rounded-xl border border-white/5 h-32">
+                            <img src="assets/magic_button.png" alt="Absolute Simplicity"
+                                class="w-full h-full object-cover opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div
+                                    class="text-[10px] tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100 transition-opacity">
+                                    Simple as one click</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preview Side -->
+                <div id="vibe-preview-card"
+                    class="relative holographic-card aspect-video flex flex-col items-center justify-center text-center p-8 rounded-2xl overflow-hidden">
+                    <div id="vibe-glow"
+                        class="absolute inset-0 transition-all duration-700 pointer-events-none blur-3xl -z-10"></div>
+                    <div id="vibe-asset" class="text-7xl mb-6 transition-all duration-500">✨</div>
+                    <h3 id="vibe-title" class="text-3xl font-heading mb-2">The Interface</h3>
+                    <p id="vibe-desc" class="opacity-50 text-sm">Waiting for your command...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshop Breakdown -->
+    <section id="workshop" class="py-32 px-6 md:px-24 bg-white/5">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-7xl font-heading mb-24 text-center">4 Hours. <span
+                    class="text-accent-orange italic">Infinite</span> Possibilities.</h2>
+
+            <div class="workshop-horizontal-container">
+                <div class="workshop-track">
+                    <!-- Hour 1 -->
+                    <div class="holographic-card p-8 flex flex-col h-full border border-white/10">
+                        <div class="card-glare"></div>
+                        <div class="text-6xl font-heading text-accent-blue opacity-30 mb-6">01</div>
+                        <h3 class="text-xl font-heading mb-4">The Blueprint</h3>
+                        <p class="text-sm opacity-60 flex-grow">We teach you how to talk to a computer so it actually
+                            listens. You'll plan your site's "vibe" before touching any tools.</p>
+                    </div>
+                    <!-- Hour 2 -->
+                    <div class="holographic-card p-8 flex flex-col h-full border border-white/10">
+                        <div class="card-glare"></div>
+                        <div class="text-6xl font-heading text-accent-orange opacity-30 mb-6">02</div>
+                        <h3 class="text-xl font-heading mb-4">The Build Loop</h3>
+                        <p class="text-sm opacity-60 flex-grow">The "Wow" moment. You watch the AI build your ideas in
+                            real-time. It's like having a 24/7 personal developer.</p>
+                    </div>
+                    <!-- Hour 3 -->
+                    <div class="holographic-card p-8 flex flex-col h-full border border-white/10">
+                        <div class="card-glare"></div>
+                        <div class="text-6xl font-heading text-accent-blue opacity-30 mb-6">03</div>
+                        <h3 class="text-xl font-heading mb-4">The Polish</h3>
+                        <p class="text-sm opacity-60 flex-grow">We make it look expensive. High-quality photos, catchy
+                            text,
+                            and making sure it looks perfect on every phone.</p>
+                    </div>
+                    <!-- Hour 4 -->
+                    <div
+                        class="holographic-card p-8 flex flex-col h-full border border-white/10 reveal-trigger relative group">
+                        <!-- X-Ray Reveal Layer -->
+                        <div
+                            class="code-reveal-layer absolute inset-0 pointer-events-none z-10 opacity-0 transition-opacity duration-500 overflow-hidden p-8 md:block">
+                            <div
+                                class="code-reveal-content font-mono text-[8px] text-accent-orange/30 leading-none h-full w-full opacity-50">
+                                &lt;hour-04 status="LAUNCH"&gt;<br>
+                                &nbsp;&nbsp;await world.see(project);<br>
+                                &nbsp;&nbsp;console.log('Creator Status: ACTIVE');<br>
+                                &lt;/hour-04&gt;
+                            </div>
+                        </div>
+                        <div class="card-glare"></div>
+                        <div class="text-6xl font-heading text-accent-orange opacity-30 mb-6">04</div>
+                        <h3 class="text-xl font-heading mb-4">The Launch</h3>
+                        <p class="text-sm opacity-60 flex-grow">You hit 'Go Live'. Your website is now on the internet
+                            for
+                            the whole world to see. You're officially a creator.</p>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Founders Section: Dual Core Atmosphere -->
+    <section id="founders" class="py-32 px-6 md:px-24">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-heading mb-24 text-right">The <span
+                    class="text-accent-blue">Architects</span> Behind the Vibe</h2>
+
+            <div class="grid md:grid-cols-2 gap-16">
+                <!-- WorkFlowGuys -->
+                <div class="group cursor-pointer" onmouseenter="setBlueprintTheme('#00F0FF')"
+                    onmouseleave="setBlueprintTheme('#333333')">
+                    <div class="holographic-card p-12 mb-8 border border-accent-blue/20">
+                        <div class="card-glare"></div>
+                        <div class="text-xs tracking-[0.3em] uppercase opacity-40 mb-2">The AI guys</div>
+                        <h3 class="text-3xl font-heading mb-6 group-hover:text-accent-blue transition-colors">
+                            WorkFlowGuys</h3>
+                        <p class="opacity-60 leading-relaxed">Masters of making AI do the heavy lifting. We simplify the
+                            complex so anyone can build anything.</p>
+                    </div>
+                </div>
+
+                <!-- Kairos88 -->
+                <div class="group cursor-pointer" onmouseenter="setBlueprintTheme('#FF6B00')"
+                    onmouseleave="setBlueprintTheme('#333333')">
+                    <div class="holographic-card p-12 mb-8 border border-accent-orange/20">
+                        <div class="card-glare"></div>
+                        <div class="text-xs tracking-[0.3em] uppercase opacity-40 mb-2">The Marketing guys</div>
+                        <h3 class="text-3xl font-heading mb-6 group-hover:text-accent-orange transition-colors">Kairos88
+                        </h3>
+                        <p class="opacity-60 leading-relaxed">Experts in turning a "cool idea" into a project that
+                            actually connects with people. We bring the soul to the code.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audio Controls -->
+    <div class="fixed bottom-8 right-8 z-[10000] flex items-center gap-4 group">
+        <div id="audio-visualizer" class="flex gap-1 items-end h-4">
+            <div class="w-1 bg-accent-blue/30 h-1 rounded-full bar-1"></div>
+            <div class="w-1 bg-accent-blue/30 h-1 rounded-full bar-2"></div>
+            <div class="w-1 bg-accent-blue/30 h-1 rounded-full bar-3"></div>
+        </div>
+        <button id="audio-toggle"
+            class="text-[10px] tracking-widest uppercase opacity-40 hover:opacity-100 transition-opacity">
+            [ SOUND OFF ]
+        </button>
+    </div>
+
+    <!-- Final CTA -->
+    <section id="register" class="py-48 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-6xl md:text-9xl font-heading mb-12 tracking-tight">READY TO <span
+                    class="italic text-accent-blue">BUILD?</span></h2>
+            <p class="text-xl md:text-3xl font-light opacity-70 mb-16">No jargon. No stress. Just you, us, and a live
+                website in 4 hours.</p>
+            <a href="#"
+                class="inline-block bg-light text-primary text-2xl font-heading px-16 py-8 hover:bg-accent-blue hover:text-primary transition-all duration-500 hover:tracking-widest">
+                Save My Spot
+            </a>
+        </div>
+    </section>
+
+    <!-- Static Logo Element (Inspired by Hitoba) -->
+    <div class="fixed bottom-8 left-8 z-50 pointer-events-none">
+        <div
+            class="text-sm font-heading opacity-10 rotate-90 origin-bottom-left whitespace-nowrap tracking-[0.5em] uppercase">
+            WorkFlowGuys × Kairos88
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
