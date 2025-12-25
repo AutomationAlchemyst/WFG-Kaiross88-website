@@ -100,8 +100,10 @@ function initBlueprint() {
     let gyroX = 0, gyroY = 0;
 
     window.addEventListener('mousemove', (e) => {
-        targetX = (e.clientX / window.innerWidth - 0.5) * 0.5;
-        targetY = (e.clientY / window.innerHeight - 0.5) * 0.5;
+        if (window.matchMedia("(pointer: fine)").matches) {
+            targetX = (e.clientX / window.innerWidth - 0.5) * 0.5;
+            targetY = (e.clientY / window.innerHeight - 0.5) * 0.5;
+        }
     });
 
     // Mobile Gravity (Gyroscope)
@@ -184,6 +186,7 @@ function initCustomCursor() {
     let innerX = 0, innerY = 0;
 
     document.addEventListener('mousemove', (e) => {
+        if (!window.matchMedia("(pointer: fine)").matches) return;
         mouseX = e.clientX;
         mouseY = e.clientY;
         // Update mask constant for CSS
@@ -808,6 +811,7 @@ function initVisualAssetUX() {
 
     // 2. Parallax Glow & Mouse Tracking for Borders
     window.addEventListener('mousemove', (e) => {
+        if (!window.matchMedia("(pointer: fine)").matches) return;
         const xPercent = (e.clientX / window.innerWidth - 0.5) * 2;
         const yPercent = (e.clientY / window.innerHeight - 0.5) * 2;
 

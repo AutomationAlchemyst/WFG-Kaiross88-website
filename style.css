@@ -635,3 +635,17 @@ html.lenis {
         min-height: 280px;
     }
 }
+
+/* --- Mobile Cursor Reset --- */
+@media (pointer: coarse) {
+    #custom-cursor {
+        display: none !important;
+    }
+
+    body,
+    a,
+    button,
+    [role="button"] {
+        cursor: auto !important;
+    }
+}
