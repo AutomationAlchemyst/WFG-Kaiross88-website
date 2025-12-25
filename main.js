@@ -471,6 +471,7 @@ function initGlitch() {
 // --- Scroll Animations ---
 function initScrollAnimations() {
     gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize: true });
 
     // Kinetic Marquee
     const marquee = document.getElementById('kinetic-marquee');
